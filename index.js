@@ -9,7 +9,6 @@ function addToBank(number) {
     bank.push(number);
     render();
 }
-console.log(addToBank(5));
 
 function sortNumber() {
     const number = bank.shift();
@@ -44,7 +43,7 @@ function NumberForm() {
             </label>
             <input type="text" name="number" type="number">
             </input>
-            <button type="button">Add number</button>
+            <button>Add number</button>
             <button type="button" id="sort-one-btn">Sort 1</button>
             <button type="button" id="sort-all-btn">Sort All</button>
         </form>
@@ -61,10 +60,18 @@ function NumberForm() {
         }
         addToBank(Number(number));
     })
+
+    $form.querySelector("#sort-one-btn").addEventListener("click", function() {
+        sortOne();
+    });
+
+    $form.querySelector("#sort-all-btn").addEventListener("click", function() {
+        sortAll();
+    })
     return $form
 }
 
-function NumberInBank() {
+function NumberInBank(number) {
     const $span = document.createElement("span");
     $span.textContent = number;
 
